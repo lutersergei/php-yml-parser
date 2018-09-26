@@ -68,6 +68,12 @@ class Offer
      */
     protected $params;
 
+    protected $barcode;
+
+    protected $weight;
+
+    protected $dimensions;
+
     public function getId()
     {
         return $this->id;
@@ -268,7 +274,7 @@ class Offer
     public function addParam(Param $param)
     {
         $name = mb_strtolower($param->getName(), 'UTF-8');
-        $this->params[$name] = $param;
+        $this->params[$name][] = $param;
 
         return $this;
     }
@@ -295,5 +301,53 @@ class Offer
         $this->oldPrice = $oldPrice;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBarcode()
+    {
+        return $this->barcode;
+    }
+
+    /**
+     * @param mixed $barcode
+     */
+    public function setBarcode($barcode)
+    {
+        $this->barcode = $barcode;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getWeight()
+    {
+        return $this->weight;
+    }
+
+    /**
+     * @param mixed $weight
+     */
+    public function setWeight($weight)
+    {
+        $this->weight = $weight;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDimensions()
+    {
+        return $this->dimensions;
+    }
+
+    /**
+     * @param mixed $dimensions
+     */
+    public function setDimensions($dimensions)
+    {
+        $this->dimensions = $dimensions;
     }
 }
